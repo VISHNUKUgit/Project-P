@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addProjectAPI } from '../Service/allAPI';
+import { addProjectResponseContext } from '../Context/ContextShare';
 
 
 function AddProjects() {
+  const{addProjectResponse,setaddProjectResponse} = useContext(addProjectResponseContext)
+  // use same variable name for 
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setProjectDetails({
@@ -31,7 +34,7 @@ function AddProjects() {
     overview: "",
     projectImg: null
   })
-  console.log(projectDetails);
+  // console.log(projectDetails);
   const [token,setToken]= useState("")
   useEffect(()=>{
     if(sessionStorage.getItem("token")){
@@ -69,6 +72,7 @@ function AddProjects() {
         if (result.status===200) {
           console.log(result.data);
           handleClose()
+          setaddProjectResponse(result.data)
           toast.success("projected added successfully")
           
         }
@@ -83,7 +87,7 @@ function AddProjects() {
       toast.error("Error  Adding project Api:", error);
     }
   }
-  
+  // console.log(projectDetails.projectImg);
     return (
       <div>
         <Button variant="info" onClick={handleShow}>

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import MyProjects from '../Components/MyProjects'
 import Profile from '../Components/Profile'
+import UserDataProvider from '../Context/UserDataProvider'
 
 function Dashboard() {
   const [username,setUsername] = useState("user")
+  
   useEffect(()=>{
     if(sessionStorage.getItem("existingUser"))
     {
@@ -22,7 +24,9 @@ setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
            <MyProjects />
           </div>
           <div className='w-25'>
-            <Profile />
+            <UserDataProvider>
+              <Profile />
+            </UserDataProvider>
           </div>
       </div>
     </div>

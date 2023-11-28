@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Container, Navbar } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { tokenAuthorisationContext } from '../Context/TokenAuthContext'
 function Header({insideDashboard}) {
+    const {isAuthorized,setIsAuthorized} = useContext(tokenAuthorisationContext)
+    const navigate = useNavigate()
+    const handleLogout = ()=>{
+        sessionStorage.removeItem("existingUser")
+        sessionStorage.removeItem("token")
+        setIsAuthorized(false)
+        navigate('/')
+    }
     return (
         <Navbar className='bg-info position-fixed top-0 w-100 ' style={{zIndex:'1'}}>
             <Container>
@@ -14,7 +23,7 @@ function Header({insideDashboard}) {
                     </h3>
                 </Navbar.Brand>
                 {insideDashboard && <div>
-                    <h5>Logout</h5>
+                    <h5 onClick={handleLogout} style={{cursor:'pointer'}}>Logout</h5>
                 </div>}
             </Container>
         </Navbar>

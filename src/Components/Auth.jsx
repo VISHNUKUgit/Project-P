@@ -1,12 +1,15 @@
 // import { log } from 'console'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginAPI, registerUser } from '../Service/allAPI'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { tokenAuthorisationContext } from '../Context/TokenAuthContext';
+
 
 function Auth({ register }) {
+    const {isAuthorized,setIsAuthorized} = useContext(tokenAuthorisationContext)
     const navigate = useNavigate()
     const isRegisterForm = register?true:false
     const [userData,setUserData] = useState({
@@ -71,6 +74,7 @@ function Auth({ register }) {
             if (result.status === 200) {
                 sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
                 sessionStorage.setItem("token",JSON.stringify(result.data.token))
+                setIsAuthorized(true)
                 setUserData({email: "", password: "" });
                 navigate('/');
             } 
