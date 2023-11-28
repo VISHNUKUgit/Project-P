@@ -1,7 +1,14 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 export const tokenAuthorisationContext = createContext()
 function TokenAuthContext({children}) {
     const [isAuthorized,setIsAuthorized] = useState(false)
+    useEffect(()=>{
+      if(sessionStorage.getItem("token"))
+          {setIsAuthorized(true)}
+          else{
+            setIsAuthorized(false)
+          }
+    },[isAuthorized])
   return (
     <tokenAuthorisationContext.Provider value={{isAuthorized,setIsAuthorized}}>
     {children}

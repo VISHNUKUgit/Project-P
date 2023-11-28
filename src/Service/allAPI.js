@@ -40,7 +40,14 @@ export const updateProject = async(projectId,reqBody,reqHeader)=>{
 // Delete project
 
 export const deleteAProject = async(projectId,reqHeader)=>{
-    console.log("inside allApi");
+    
     return await commonAPI("DELETE",`${BASE_URL}/delete/project/${projectId}`,{},reqHeader)
                                                 
+}
+
+// Upadet Profile
+
+export const updateProfileApi = async(reqBody,reqHeader)=>{
+    console.log("inside allApi");
+    return await commonAPI("PUT",`${BASE_URL}/user/edit/`,reqBody,reqHeader)
 }

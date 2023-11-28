@@ -23,7 +23,7 @@ function Header({insideDashboard}) {
                     </h3>
                 </Navbar.Brand>
                 {insideDashboard && <div>
-                    <h5 onClick={handleLogout} style={{cursor:'pointer'}}>Logout</h5>
+                    <h5 onClick={handleLogout} style={{cursor:'pointer'}}>Logout <i class="fa-solid fa-arrow-right-from-bracket fa-sm"></i></h5>
                 </div>}
             </Container>
         </Navbar>

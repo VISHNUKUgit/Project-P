@@ -25,22 +25,7 @@ function Auth({ register }) {
        }
        else
        
-    //    {    
-    //     const result = await registerUser(userData)
-    //        console.log(result);
-    //         if (result.status===200){
-    //             alert(`${result.data.username} has registered successfully`)
-    //             setUserData({username:"",
-    //             email:"",
-    //             password:""})
-    //             Navigate('/login')
-    //         }
-    //         else if(result.status===406){
-    //             alert(`result.response.data`)
-    //         }else{
-    //             alert(`nothing`)
-    //         }
-    //    }
+    
        try {
         console.log("Sending data to server:", userData);
         const result = await registerUser(userData);
