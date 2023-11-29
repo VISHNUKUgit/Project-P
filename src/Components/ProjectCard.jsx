@@ -14,7 +14,7 @@ function ProjectCard({project}) {
     return (
         <>
             <Card className='shadow' onClick={handleShow} >
-            <Card.Img style={{height:"250px"}} variant="top" src={project ?`${BASE_URL}/${project.projectImg}`:""} />
+            <Card.Img style={{height:"250px"}} variant="top" src={project ?`${BASE_URL}/Folder/${project.projectImg}`:""} />
 
                 <Card.Body>
                 <Card.Title className='fw-bolder text-center'>{project ? project.title : 'No Title'}</Card.Title>
