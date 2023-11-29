@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 // import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Modal } from 'react-bootstrap';
+import { BASE_URL } from '../Service/baseURL';
 
 
 function ProjectCard({project}) {
@@ -13,7 +14,7 @@ function ProjectCard({project}) {
     return (
         <>
             <Card className='shadow' onClick={handleShow} >
-            <Card.Img style={{height:"250px"}} variant="top" src={project ?`http://localhost:4000/Folder/${project.projectImg}`:""} />
+            <Card.Img style={{height:"250px"}} variant="top" src={project ?`${BASE_URL}/${project.projectImg}`:""} />
 
                 <Card.Body>
                 <Card.Title className='fw-bolder text-center'>{project ? project.title : 'No Title'}</Card.Title>
